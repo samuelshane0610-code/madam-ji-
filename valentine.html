@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srushti will you be my valentine?</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffd6e8, #fff);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    margin-top: 20px;
+    position: relative;
+    height: 80px;
+  }
+
+  button {
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #yesBtn {
+    background: #ff3b7a;
+    color: white;
+    transform: scale(1);
+  }
+
+  #noBtn {
+    background: #eee;
+    color: #333;
+    position: absolute;
+    right: 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+  <h1>
+    Srushti, I love you a lot ❤️<br><br>
+    Would you like to spend your day with me?
+  </h1>
+
+  <div class="buttons">
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 💔</button>
+  </div>
+</div>
+
+<div class="card hidden" id="sorryCard">
+  <h1>Sorry… 😌</h1>
+  <img src="cute.jpg" alt="Cute moment">
+</div>
+
+<div class="card hidden" id="yesCard">
+  <h1>You chose YES 🥹❤️</h1>
+  <img src="cute.jpg" alt="Us">
+  <h2>Your surprise will be there tomorrow 💝</h2>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const mainCard = document.getElementById("mainCard");
+  const sorryCard = document.getElementById("sorryCard");
+  const yesCard = document.getElementById("yesCard");
+
+  let noCount = 0;
+  let yesScale = 1;
+
+  noBtn.addEventListener("click", () => {
+    noCount++;
+
+    if (noCount === 1) {
+      mainCard.classList.add("hidden");
+      sorryCard.classList.remove("hidden");
+
+      setTimeout(() => {
+        sorryCard.classList.add("hidden");
+        mainCard.classList.remove("hidden");
+      }, 1200);
+    } else {
+      yesScale += 0.25;
+      yesBtn.style.transform = `scale(${yesScale})`;
+    }
+  });
+
+  yesBtn.addEventListener("click", () => {
+    mainCard.classList.add("hidden");
+    yesCard.classList.remove("hidden");
+  });
+</script>
+
+</body>
+</html>
